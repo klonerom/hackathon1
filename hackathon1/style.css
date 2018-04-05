@@ -1,3 +1,4 @@
+
 #scrollUp {
     position: fixed;
     bottom : 50px;
@@ -11,4 +12,39 @@
 
 .btn-card {
     white-space: normal;
+
+.p-pedigree {
+    font-weight: bold;
+}
+
+.h4-modalTitle{
+    margin: 20px auto;
+    background-color: white;
+}
+
+
+/*couleurs progress-bar*/
+.progress-bar-intelligence{
+   background-color: #6eff33;
+}
+
+.progress-bar-strength{
+    background-color: #ff33f9;
+}
+
+.progress-bar-speed{
+    background-color: #ffa233;
+}
+
+.progress-bar-durability{
+    background-color: #5233ff;
+}
+
+.progress-bar-power{
+    background-color: #ff3333;
+}
+
+.progress-bar-combat{
+    background-color: #f9ff33;
+
 }
