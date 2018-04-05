@@ -21,15 +21,6 @@ function startFight($idPlayerOne, $idPlayerTwo) {
     }
     return $fightId;
 }
-function kick($attacking, $defending, $fightId) {
-    $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a donné un kick à ', $defending, $fightId)");
-}
-function punch($attacking, $defending, $fightId) {
-    $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a punché dans sa face ', $defending, $fightId)");
-}
-function special($attacking, $defending, $fightId) {
-    $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a utilisé son coup spécial sur ', $defending, $fightId)");
-}
 function win($attacking, $defending, $fightId) {
     $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a vaincu avec bravoure et panache ', $defending, $fightId)");
 }
@@ -42,7 +33,6 @@ function resume($fightId) {
     }
 }
 
-
 /*
 Calcul des dommages :
 
@@ -52,6 +42,15 @@ $coeffAttack = rand(0.4,1) pour le kick,
 $coeffAttack = rand(0,0.8) pour le punch,
 $coeffAttack = rand(0.8,1) pour le special
 
+function kick($attacking, $defending, $fightId) {
+    $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a donné un kick à ', $defending, $fightId)");
+}
+function punch($attacking, $defending, $fightId) {
+    $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a punché dans sa face ', $defending, $fightId)");
+}
+function special($attacking, $defending, $fightId) {
+    $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a utilisé son coup spécial sur ', $defending, $fightId)");
+}
 
 
 
