@@ -12,6 +12,7 @@
 
 .btn-card {
     white-space: normal;
+}
 
 .p-pedigree {
     font-weight: bold;
@@ -26,6 +27,7 @@
 /*couleurs progress-bar*/
 .progress-bar-intelligence{
    background-color: #6eff33;
+    font-size: 200px;
 }
 
 .progress-bar-strength{
