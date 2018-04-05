@@ -1,6 +1,5 @@
 <?php
 
-
 var_dump($_POST);
 
 require_once ('../vendor/autoload.php');
@@ -64,14 +63,12 @@ $characters = json_decode($body);
                         </div>
                     </div>
                 </div>
-                    
-
 
                     <div class="modal fade" id="modal<?php echo $character->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content" style="background-color: <?php
-                            
-                            
+
+
                     //modal
 
                    // $id = $character->id; //334
@@ -80,8 +77,8 @@ $characters = json_decode($body);
                   //  $body_modal = $response_modal->getBody();
                    // $contents = $body_modal->getContents();
                   //  $persos = json_decode($contents);
-                    
-                            
+
+
                             if ($character->appearance->gender  == 'Male'){
                                 echo "#a4fde9";
                             } else {
@@ -181,8 +178,8 @@ $characters = json_decode($body);
                         </div>
                     </div>
 
-                   
-                    
+
+
                 <?php
                 }
                 ?>
