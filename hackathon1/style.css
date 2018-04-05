@@ -1,11 +1,47 @@
+/* style AUrélien*/
+body {
+    background: url("https://thumbs.gfycat.com/ImaginativeGrandioseArcticwolf-size_restricted.gif");
+    background-size: 100%;
+}
+
+.body-header {
+    background-color: red;
+    color: white;
+}
 
 
 .h1-fight, .h2-fight, .h3-fight{
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+.h2-fight{
+    border: solid;
+    width: 50%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: darkred;
+}
+
+.h2-header{
+    width: 300px;
+    border: solid;
+    border-radius: 10px;
+    background-color: darkred;
+    margin: auto;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
+
+
 }
 
 .PV-fight{
     margin: 10px;
+    height: 30px;
+    border: solid;
+    border-radius: 10px;
 }
 
 .img-fight{
@@ -30,3 +66,40 @@
     width: 200px;
     margin: 5px;
 }
+
+
+.section-fight{
+    background-color: darkred;
+}
+
+.section-header{
+    border: solid;
+    background-color: darkorange;
+    border-radius: 10px;
+}
+
+.section-no-color{
+    background-color: none;
+}
+
+p{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: white;
+}
+
+a:link{
+    text-decoration: none;
+    color: white;
+}
+.link-menu, .link-menu:focus {
+    background-color: darkred;
+    border-color: white;
+}
+
+.link-menu:hover, .link-menu:active:hover {
+    background-color: darkblue;
+    border-color: white;
+
+}
+/*-- fin partie AUrélien*/
