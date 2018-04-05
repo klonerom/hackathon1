@@ -1,4 +1,13 @@
+/*body {
+    background: url("https://thumbs.gfycat.com/ImaginativeGrandioseArcticwolf-size_restricted.gif");
+   background-size: 100%;
+}
+*/
+/*index*/
 
+.h5-card{
+    color:black;
+}
 
 #scrollUp {
     position: fixed;
@@ -8,19 +17,28 @@
 }
 
 .card {
-    height: 420px;
+    height: 380px;
 }
 
 .btn-card {
     white-space: normal;
+    margin-bottom: 20px;
 }
 
+.btn-primary{
+    background-color: darkorange;
+    border-color: darkred;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:active:hover,
+.btn-primary:focus {
+    background-color: darkorange;
+    border-color: darkred;
+}
 
 /* style AUrélien*/
-body {
-    background: url("https://thumbs.gfycat.com/ImaginativeGrandioseArcticwolf-size_restricted.gif");
-    background-size: 100%;
-}
 
 .body-header {
     background-color: red;
@@ -127,8 +145,13 @@ a:link{
 .h4-modalTitle{
     margin: 20px auto;
     background-color: white;
+    color: black;
 }
 
+.modal-title,
+h6 {
+    color:black;
+}
 
 
 /*couleurs progress-bar*/

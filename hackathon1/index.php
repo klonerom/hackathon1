@@ -1,8 +1,9 @@
 <?php
 
+require_once ('../vendor/autoload.php');
+require_once ('header.php');
 var_dump($_POST);
 
-require_once ('../vendor/autoload.php');
 use GuzzleHttp\Client;
 $client = new Client([
     // Base URI is used with relative requests
@@ -34,13 +35,8 @@ $characters = json_decode($body);
     <div class="container">
         <form action="index.php" method="post">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="text-center">Fightersdex</h1>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-12  text-center p-3">
-                    <button type="submit" class="btn btn-primary">Fight</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Fight</button>
                 </div>
             </div>
             <div class="row">
@@ -51,14 +47,16 @@ $characters = json_decode($body);
                     <div class="card">
                         <img class="card-img-top" src="<?php echo $character->images->sm; ?>" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $character->name; ?></h5>
                             <button type="button" class="btn btn-primary btn-card" data-toggle="modal"
                                     data-target="#modal<?php echo $character->id?>" name="modal">
                                 Description
                             </button>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="<?php echo $character->id?>" id="<?php echo $character->id?>">
-                                <label class="custom-control-label" for="<?php echo $character->id ?>"></label>
+                                <label class="custom-control-label" for="<?php echo $character->id ?>"><h5
+                                            class="h5-card"><?php
+                                        echo $character->name; ?></h5>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -67,20 +65,8 @@ $characters = json_decode($body);
                     <div class="modal fade" id="modal<?php echo $character->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content" style="background-color: <?php
-
-
-                    //modal
-
-                   // $id = $character->id; //334
-
-                  //  $response_modal = $client->request('GET', 'id/' . $id . '.json');
-                  //  $body_modal = $response_modal->getBody();
-                   // $contents = $body_modal->getContents();
-                  //  $persos = json_decode($contents);
-
-
                             if ($character->appearance->gender  == 'Male'){
-                                echo "#a4fde9";
+                                echo "#ffaa80";
                             } else {
                                 echo "#f7c7f9";
                             }

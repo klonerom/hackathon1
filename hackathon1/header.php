@@ -1,3 +1,7 @@
+<?php
+require_once ('../vendor/autoload.php');
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +22,7 @@
             <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="fight.php"><h2 class="h2-header link-menu"> Choix des Wild Fighters </h2></a>
+                        <a href="index.php"><h2 class="h2-header link-menu"> Choix des Wild Fighters </h2></a>
                     </div>
                     <div class="col-md-4">
                         <a href="fight.php"><h2 class="h2-header link-menu"> Entre dans la Wild Arena </h2></a>
