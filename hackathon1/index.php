@@ -5,7 +5,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 use GuzzleHttp\Client;
 
 $client = new Client(['base_uri' => 'https://akabab.github.io/superhero-api/api/']);
-$id = 1; //334
+$id = 334; //334
 
 
 $response = $client->request('GET', 'id/' . $id . '.json');
@@ -42,13 +42,13 @@ $persos = json_decode($contents);
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color: <?php
             if ($persos->appearance->gender  == 'Male'){
-                echo "#33f9ff";
+                echo "#a4fde9";
             } else {
-                echo "#ff33f9";
+                echo "#f7c7f9";
             }
             ?>">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLongTitle"><?php echo $persos->name ?></h2>
+                    <h2 class="modal-title text-center" id="exampleModalLongTitle"><?php echo $persos->name ?></h2>
                 </div>
                 <div class="modal-body">
                     <div class="row d-flex">
@@ -58,39 +58,38 @@ $persos = json_decode($contents);
                         <div class="col-md-8">
                             <h6>Intelligence</h6>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-intelligence" role="progressbar"
+                                     aria-valuenow="75" aria-valuemin="0"
                                      aria-valuemax="100" style="width:<?php echo $persos->powerstats->intelligence
                                 ?>%"></div>
                             </div>
                             <h6>Force</h6>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-strength" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                      aria-valuemax="100" style="width:<?php echo $persos->powerstats->strength
                                 ?>%"></div>
                             </div>
                             <h6>Vitesse</h6>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-speed" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                      aria-valuemax="100" style="width:<?php echo $persos->powerstats->speed
                                 ?>%"></div>
                             </div>
                             <h6>Resistence</h6>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-durability" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                      aria-valuemax="100" style="width:<?php echo $persos->powerstats->durability
                                 ?>%"></div>
                             </div>
                             <h6>Pouvoir</h6>
                             <div class="progress">
-
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-power" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                      aria-valuemax="100" style="width:<?php echo $persos->powerstats->power
                                 ?>%"></div>
                             </div>
                             <h6>Combat</h6>
                             <div class="progress">
-
-                                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                <div class="progress-bar progress-bar-combat" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                                      aria-valuemax="100" style="width:<?php echo $persos->powerstats->combat
                                 ?>%"></div>
                             </div>
