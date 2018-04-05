@@ -1,4 +1,5 @@
 <?php
+require_once '../private/bd.php';
 
 class Fighter
 {
@@ -20,7 +21,7 @@ class Fighter
     }
 
 
-    public function punch(Fighter $perso, $fightId)
+    public function punch(Fighter $perso)
     {
         if ($perso->getId() != $this->id)
         {
@@ -52,7 +53,7 @@ class Fighter
 
     public function punchDamage()
     {
-        $this->damage = rand(0,0.8) * ($perso->getIntelligence()/$this->getIntelligence() + $perso->getSpeed()/$this->getSpeed() + $perso->getStrength()/$this->getStrength() + $perso->getDurability()/$this->getDurability()) * $perso->getCombat();
+        $this->damage = rand(10,40);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -64,7 +65,7 @@ class Fighter
     
     public function kickDamage()
     {
-        $this->damage = rand(0.4,1) * ($perso->getIntelligence()/$this->getIntelligence() + $perso->getSpeed()/$this->getSpeed() + $perso->getStrength()/$this->getStrength() + $perso->getDurability()/$this->getDurability()) * $perso->getCombat();
+        $this->damage = rand(30,60);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -76,7 +77,7 @@ class Fighter
     
     public function specialDamage()
     {
-        $this->damage = rand(0.8,1) * ($perso->getIntelligence()/$this->getIntelligence() + $perso->getSpeed()/$this->getSpeed() + $perso->getStrength()/$this->getStrength() + $perso->getDurability()/$this->getDurability()) * $perso->getCombat();
+        $this->damage = rand(40,70);
 
         $this->power = $this->getPower() - $this->damage;
 
