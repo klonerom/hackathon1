@@ -1,0 +1,14 @@
+#scrollUp {
+    position: fixed;
+    bottom : 50px;
+    right: -100px;
+    opacity: 0.5;
+}
+
+.card {
+    height: 420px;
+}
+
+.btn-card {
+    white-space: normal;
+}
