@@ -13,15 +13,11 @@ class Fighter
     private $combat;
 
 
-    const CEST_MOI = 1; // Constante renvoyée par la méthode `frapper` si on se frappe soi-même.
-    const PERSONNAGE_TUE = 2; // Constante renvoyée par la méthode `frapper` si on a tué le personnage en le frappant.
-    const PERSONNAGE_FRAPPE = 3; // Constante renvoyée par la méthode `frapper` si on a bien frappé le personnage.
-
-
     public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
     }
+
 
     public function punch(Fighter $perso)
     {
@@ -58,7 +54,7 @@ class Fighter
 
         $this->power = $this->getPower() - $this->damage;
 
-        // Si on a 100 de dégâts ou plus, on dit que le personnage a été tué.
+        // Pas de negatif : min 0
         if ($this->getPower() <= 0) {
             $this->power = 0;
         }
@@ -70,7 +66,7 @@ class Fighter
 
         $this->power = $this->getPower() - $this->damage;
 
-        // Si on a 100 de dégâts ou plus, on dit que le personnage a été tué.
+        // Pas de negatif : min 0
         if ($this->getPower() <= 0) {
             $this->power = 0;
         }
@@ -82,13 +78,16 @@ class Fighter
 
         $this->power = $this->getPower() - $this->damage;
 
-        // Si on a 100 de dégâts ou plus, on dit que le personnage a été tué.
+        // Pas de negatif : min 0
         if ($this->getPower() <= 0) {
             $this->power = 0;
         }
     }
 
-
+    /*
+     * Init fighter
+     *
+     */
     public function hydrate(array $donnees)
     {
         foreach ($donnees as $key => $value)
@@ -103,7 +102,6 @@ class Fighter
     }
 
     // GETTERS //
-
 
     public function getdamage()
     {
@@ -136,6 +134,37 @@ class Fighter
         return $this->power;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCombat()
+    {
+        return $this->combat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDurability()
+    {
+        return $this->durability;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSpeed()
+    {
+        return $this->speed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStrength()
+    {
+        return $this->strength;
+    }
 
     /**
      * @param mixed $power
@@ -172,5 +201,45 @@ class Fighter
         {
             $this->name = $name;
         }
+    }
+
+    /**
+     * @param mixed $combat
+     */
+    public function setCombat($combat)
+    {
+        $this->combat = $combat;
+    }
+
+    /**
+     * @param mixed $durability
+     */
+    public function setDurability($durability)
+    {
+        $this->durability = $durability;
+    }
+
+    /**
+     * @param mixed $intelligence
+     */
+    public function setIntelligence($intelligence)
+    {
+        $this->intelligence = $intelligence;
+    }
+
+    /**
+     * @param mixed $speed
+     */
+    public function setSpeed($speed)
+    {
+        $this->speed = $speed;
+    }
+
+    /**
+     * @param mixed $strength
+     */
+    public function setStrength($strength)
+    {
+        $this->strength = $strength;
     }
 }
