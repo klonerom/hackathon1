@@ -1,6 +1,5 @@
 <?php
 
-
 var_dump($_POST);
 
 require_once ('../vendor/autoload.php');
@@ -15,17 +14,6 @@ $response = $client->request('GET', 'all.json');
 $body = $response->getBody();
 $characters = json_decode($body);
 
-//modal
-
-if (isset($_POST['modal'])) {
-    var_dump($_POST);
-    $id = $_POST['modal']; //334
-
-    $response_modal = $client->request('GET', 'id/' . $id . '.json');
-    $body_modal = $response_modal->getBody();
-    $contents = $body_modal->getContents();
-    $persos = json_decode($contents);
-}
 ?>
 
 
@@ -64,7 +52,7 @@ if (isset($_POST['modal'])) {
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $character->name; ?></h5>
                             <button type="button" class="btn btn-primary btn-card" data-toggle="modal"
-                                    data-target="#exampleModalLong" name="modal" value="<?php echo $character->id?>">
+                                    data-target="#modal<?php echo $character->id?>" name="<?php echo $character->id?>">
                                 Description
                             </button>
                             <div class="custom-control custom-checkbox">
@@ -75,113 +63,124 @@ if (isset($_POST['modal'])) {
                     </div>
                 </div>
 
+                <div class="modal fade" id="modal<?php echo $character->id?>" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <?php
+                            $id = $character->id; //334
+                            $response_modal = $client->request('GET', 'id/' . $id . '.json');
+                            $body_modal = $response_modal->getBody();
+                            $contents = $body_modal->getContents();
+                            $persos = json_decode($contents);
+
+                        ?>
+                        <div class="modal-content" style="background-color: <?php
+                        if ($persos->appearance->gender  == 'Male'){
+                            echo "#a4fde9";
+                        } else {
+                            echo "#f7c7f9";
+                        }
+                        ?>">
+                            <div class="modal-header">
+                                <h2 class="modal-title text-center" id="exampleModalLongTitle"><?php if(isset($persos)) { echo
+                                    $persos->name; }?></h2>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row d-flex">
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <img class="rounded " src="<?php if(isset($persos)) { echo $persos->images->sm; } ?>">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6>Intelligence</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-intelligence" role="progressbar"
+                                                 aria-valuenow="75" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:<?php echo $persos->powerstats->intelligence
+                                            ?>%"></div>
+                                        </div>
+                                        <h6>Force</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-strength" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:<?php if(isset($persos)) {echo
+                                            $persos->powerstats->strength; }
+                                            ?>%"></div>
+                                        </div>
+                                        <h6>Vitesse</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-speed" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:<?php echo $persos->powerstats->speed
+                                            ?>%"></div>
+                                        </div>
+                                        <h6>Resistence</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-durability" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:<?php if(isset($persos)) { echo
+                                            $persos->powerstats->durability; }
+                                            ?>%"></div>
+                                        </div>
+                                        <h6>Pouvoir</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-power" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:<?php if(isset($persos)) { echo
+                                            $persos->powerstats->power; }
+                                            ?>%"></div>
+                                        </div>
+                                        <h6>Combat</h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-combat" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                                 aria-valuemax="100" style="width:<?php if(isset($persos)) { echo
+                                            $persos->powerstats->combat; }
+                                            ?>%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="text-center h4-modalTitle">Pedigré</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <h6 class="p-pedigree">Taille</h6>
+                                        <h6 class="p-pedigree">Poid</h6>
+                                        <h6 class="p-pedigree">Sexe</h6>
+                                    </div>
+                                    <div class="col-2">
+                                        <h6><?php if(isset($persos)) { echo $persos->appearance->height[1];} ?></h6>
+                                        <h6><?php if(isset($persos)) { echo $persos->appearance->weight[1];} ?></h6>
+                                        <h6><?php if(isset($persos)) { echo $persos->appearance->gender;} ?></h6>
+                                    </div>
+                                    <div class="col-5">
+                                        <h6 class="p-pedigree">Couleur des yeux</h6>
+                                        <h6 class="p-pedigree">Couleur des cheveux</h6>
+                                        <h6 class="p-pedigree">Alias</h6>
+                                    </div>
+                                    <div class="col-3">
+                                        <h6><?php if(isset($persos)) { echo $persos->appearance->eyeColor;} ?></h6>
+                                        <h6><?php if(isset($persos)) { echo $persos->appearance->hairColor;} ?></h6>
+                                        <h6><?php if(isset($persos)) { echo $persos->biography->aliases[0];} ?></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="text-center h4-modalTitle">Stat</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <?php
                 }
                 ?>
             </div>
         </form>
 
-        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content" style="background-color: <?php
-                if ($persos->appearance->gender  == 'Male'){
-                    echo "#a4fde9";
-                } else {
-                    echo "#f7c7f9";
-                }
-                ?>">
-                    <div class="modal-header">
-                        <h2 class="modal-title text-center" id="exampleModalLongTitle"><?php if(isset($persos)) { echo
-                            $persos->name; }?></h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row d-flex">
-                            <div class="col-md-4 d-flex align-items-center">
-                                <img class="rounded " src="<?php if(isset($persos)) { echo $persos->images->sm; } ?>">
-                            </div>
-                            <div class="col-md-8">
-                                <h6>Intelligence</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-intelligence" role="progressbar"
-                                         aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100" style="width:<?php echo $persos->powerstats->intelligence
-                                    ?>%"></div>
-                                </div>
-                                <h6>Force</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-strength" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100" style="width:<?php if(isset($persos)) {echo
-                                    $persos->powerstats->strength; }
-                                    ?>%"></div>
-                                </div>
-                                <h6>Vitesse</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-speed" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100" style="width:<?php echo $persos->powerstats->speed
-                                    ?>%"></div>
-                                </div>
-                                <h6>Resistence</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-durability" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100" style="width:<?php if(isset($persos)) { echo
-                                    $persos->powerstats->durability; }
-                                    ?>%"></div>
-                                </div>
-                                <h6>Pouvoir</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-power" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100" style="width:<?php if(isset($persos)) { echo
-                                    $persos->powerstats->power; }
-                                    ?>%"></div>
-                                </div>
-                                <h6>Combat</h6>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-combat" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                         aria-valuemax="100" style="width:<?php if(isset($persos)) { echo
-                                    $persos->powerstats->combat; }
-                                    ?>%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h4 class="text-center h4-modalTitle">Pedigré</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2">
-                                <h6 class="p-pedigree">Taille</h6>
-                                <h6 class="p-pedigree">Poid</h6>
-                                <h6 class="p-pedigree">Sexe</h6>
-                            </div>
-                            <div class="col-2">
-                                <h6><?php if(isset($persos)) { echo $persos->appearance->height[1];} ?></h6>
-                                <h6><?php if(isset($persos)) { echo $persos->appearance->weight[1];} ?></h6>
-                                <h6><?php if(isset($persos)) { echo $persos->appearance->gender;} ?></h6>
-                            </div>
-                            <div class="col-5">
-                                <h6 class="p-pedigree">Couleur des yeux</h6>
-                                <h6 class="p-pedigree">Couleur des cheveux</h6>
-                                <h6 class="p-pedigree">Alias</h6>
-                            </div>
-                            <div class="col-3">
-                                <h6><?php if(isset($persos)) { echo $persos->appearance->eyeColor;} ?></h6>
-                                <h6><?php if(isset($persos)) { echo $persos->appearance->hairColor;} ?></h6>
-                                <h6><?php if(isset($persos)) { echo $persos->biography->aliases[0];} ?></h6>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h4 class="text-center h4-modalTitle">Stat</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
