@@ -10,7 +10,7 @@ $client = new GuzzleHttp\Client([
 );
 
 // Send a request to https://foo.com/api/test
-$response = $client->request('GET', 'all.json');
+$response = $client->request('GET', 'id/2.json');
 // or
 // Send request https://foo.com/api/test?key=maKey&name=toto
 //$response = $client->request('GET', 'id', [
@@ -25,9 +25,10 @@ $body = $response->getBody();
 $contents = $body->getContents();
 $persos = json_decode($contents);
 
-foreach ($persos as $perso) {
-    echo '<p>' . $perso->name . '</p>';
-}
+var_dump($persos);
+//foreach ($persos as $perso) {
+//    echo '<p>' . $perso . '</p>';
+//}
 
 //echo $persos->biography->fullName;
 
