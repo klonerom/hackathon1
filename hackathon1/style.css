@@ -1,3 +1,21 @@
+
+
+#scrollUp {
+    position: fixed;
+    bottom : 50px;
+    right: -100px;
+    opacity: 0.5;
+}
+
+.card {
+    height: 420px;
+}
+
+.btn-card {
+    white-space: normal;
+}
+
+
 /* style AUrélien*/
 body {
     background: url("https://thumbs.gfycat.com/ImaginativeGrandioseArcticwolf-size_restricted.gif");
@@ -33,8 +51,6 @@ body {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
-
-
 }
 
 .PV-fight{
@@ -103,6 +119,7 @@ a:link{
 
 }
 /*-- fin partie AUrélien*/
+
 .p-pedigree {
     font-weight: bold;
 }
@@ -111,3 +128,32 @@ a:link{
     margin: 20px auto;
     background-color: white;
 }
+
+
+
+/*couleurs progress-bar*/
+.progress-bar-intelligence{
+   background-color: #6eff33;
+    font-size: 200px;
+}
+
+.progress-bar-strength{
+    background-color: #ff33f9;
+}
+
+.progress-bar-speed{
+    background-color: #ffa233;
+}
+
+.progress-bar-durability{
+    background-color: #5233ff;
+}
+
+.progress-bar-power{
+    background-color: #ff3333;
+}
+
+.progress-bar-combat{
+    background-color: #f9ff33;
+}
+
