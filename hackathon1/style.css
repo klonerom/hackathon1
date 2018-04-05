@@ -1,0 +1,32 @@
+
+
+.h1-fight, .h2-fight, .h3-fight{
+    text-align: center;
+}
+
+.PV-fight{
+    margin: 10px;
+}
+
+.img-fight{
+    border-radius: 200px;
+    display: block;
+    height: 400px;
+    width: 400px;
+}
+
+.img-vs{
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: auto;
+}
+
+.btn-attack{
+    margin: auto;
+}
+
+.btn-1, .btn-2, .btn-3, .btn-4{
+    width: 200px;
+    margin: 5px;
+}
