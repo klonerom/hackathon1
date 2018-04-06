@@ -19,6 +19,10 @@ if (!empty($_POST)) {
     $_SESSION["idFighter1"] = $caseID[0];
     $_SESSION["idFighter2"] = $caseID[1];
 }
+if(!isset($_SESSION["idFighter2"])){
+    header('location:index.php?echec=1');die;
+}
+
 
 // Personnage 1 : requete
 $responsePerso1 = $client->request('GET', "id/".$_SESSION["idFighter1"].".json");
@@ -240,7 +244,6 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
                     </div>
                 </div>
             </div>
-            <br>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -422,35 +425,39 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
                         </div>
                     </div>
                 </div>
-
             </div>
-        <audio src="music/Mortal%20Kombat%20Theme%20Song%20Original.mp3"  autoplay loop alt="Audio no supported"></audio>
+        <br>
+        <div class="col-md-4 btn-change-perso">
+            <a href="index.php"><h2 class="h2-header link-menu"> Changer vos personnages </h2></a>
+        </div>
+        <audio src="music/Mortal%20Kombat%20Theme%20Song%20Original.mp3" autoplay loop></audio>
+
 
     <?php
     if ($stopFight == 0) {
         ?>
 
         <form action="" method="get" id="kick1">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
         </form>
 
 
         <form action="" method="get" id="kick2">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
         </form>
 
 
         <form action="" method="get" id="punch1">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
         </form>
 
 
         <form action="" method="get" id="punch2">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
         </form>
 
 

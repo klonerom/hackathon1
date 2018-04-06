@@ -68,6 +68,11 @@ p{
     color: white;
 }
 
+
+ .h1-fight{
+     padding: 10px;
+ }
+
 .h2-fight{
     border: solid;
     width: 50%;
@@ -240,5 +245,9 @@ audio{
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+.btn-change-perso{
+    margin: auto;
 }
 
