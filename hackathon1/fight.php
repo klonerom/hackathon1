@@ -49,7 +49,7 @@ $statPower = [
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body class="body-fight">
+    <body class="body-fight firebackground">
 
 
     <?php include 'header.php'?>
