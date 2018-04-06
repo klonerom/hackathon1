@@ -217,6 +217,41 @@ if ($fighter1->getPower() === 0) {
         <br>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
@@ -398,8 +433,6 @@ if ($fighter1->getPower() === 0) {
                     </div>
                 </div>
             </div>
-
-
 
         </div>
 

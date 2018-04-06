@@ -76,6 +76,9 @@ p{
     background-color: darkred;
 }
 
+.h3-fight{
+    margin: 15px;
+}
 
 .PV-fight{
     margin: 10px;
@@ -89,11 +92,11 @@ p{
 }
 
 .img-fight{
-    border-radius: 200px;
+    border-radius: 140px;
     display: block;
-    height: 400px;
-    width: 400px;
-    margin: auto;
+    height: 280px;
+    width: 280px;
+
 }
 
 .btn-attack{
@@ -120,10 +123,6 @@ p{
     border-radius: 0px 0px 0px 20px;
 }
 
-
-
-
-
 /* Header*/
 .h2-header{
     width: 300px;
@@ -139,7 +138,7 @@ p{
 
 .section-header{
     border: solid;
-    background-color: darkorange;
+    background-color: darkred;
     border-radius: 10px;
 }
 
