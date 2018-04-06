@@ -107,12 +107,18 @@ if ($fighter1->getPower() === 0) {
 
     $stopFight = $fighter1->getId();
 
+    header('Location: resume.php?idCombat=1&idWinner=' . $fighter2->getId());
+    die;
+
 } elseif ($fighter2->getPower() === 0) {
 
     echo '<p>' . $fighter2->getName() . ' est mort !</p>';
     echo '<p>' . $fighter1->getName() . ' is the WINNER !</p>';
 
     $stopFight = $fighter2->getId();
+
+    header('Location: resume.php?idCombat=1&idWinner=' . $fighter1->getId());
+    die;
 
 } else {
 //    echo '<p>Fighter1 : Power : ' . $fighter1->getPower() . '</p>';
@@ -202,9 +208,9 @@ if ($fighter1->getPower() === 0) {
         <br>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="row">
-                    <div class="col-md-5 offset-md-2 section-fight bdr">
+                    <div class="col-md-8 offset-md-2 section-fight bdr">
                         <h3 class="h3-fight"> Caractéristiques</h3>
                     </div>
                 </div>
@@ -212,17 +218,29 @@ if ($fighter1->getPower() === 0) {
                     <div class="col-md-2 section-fight bdr text-center">
                         <p> INT </p>
                     </div>
-                    <div class="col-md-8 section-fight bdr">
+                    <div class="col-md-10 section-fight bdr">
                         <div class="progress PV-fight ">
                             <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getIntelligence() ?>%"
                                  aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
                                  aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%</div>
                         </div>
                     </div>
-                    <div class="col-md-2 offset-md-2 section-fight bdr text-center">
+                    <div class="col-md-2 section-fight bdr text-center">
+                        <p> INT </p>
+                    </div>
+                    <div class="col-md-10 section-fight bdr">
+                        <div class="progress PV-fight ">
+                            <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getIntelligence() ?>%"
+                                 aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
+                                 aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%</div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2 section-fight bdr text-center">
                         <p> STR </p>
                     </div>
-                    <div class="col-md-8 section-fight bdr">
+                    <div class="col-md-10 section-fight bdr">
                         <div class="progress PV-fight ">
                             <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getStrength() ?>%"
                                  aria-valuenow="<?= $fighter1->getStrength() ?>%"
@@ -231,65 +249,18 @@ if ($fighter1->getPower() === 0) {
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-5 offset-md-2 section-fight bdr">
-                        <h3 class="h3-fight"> Caractéristiques</h3>
-                    </div>
-                </div>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
-
-
-
-
-        <div class="row">
-            <div class="col-md-5 section-fight bdr">
-                <h3 class="h3-fight"> Caractéristiques</h3>
-            </div>
-            <div class="col-md-2 bdr">
-            </div>
-            <div class="col-md-5 section-fight bdr">
-                <h3 class="h3-fight"> Caractéristiques </h3>
-            </div>
-        </div>
-
-
-
-
-            <div class="row">
-                <div class="col-md-1 section-fight bdr">
-                    <p> INT </p>
-                </div>
-                <div class="col-md-4 section-fight bdr">
-                    <div class="progress PV-fight ">
-                        <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getIntelligence() ?>%"
-                             aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
-                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%</div>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="col-md-2 section-no-color bdr">
-                    <p></p>
-                </div>
-
-
-
-                <div class="col-md-1 section-fight bdr">
-                    <p>INT</p>
-                </div>
-                <div class="col-md-4 section-fight bdr">
-                    <div class="progress PV-fight">
-                        <div class="progress-bar" role="progressbar" style="width: <?php echo
-                        $nbrPoint[1] ?>%" aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
-                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%</div>
-                    </div>
-                </div>
-            </div>
     </div>
 
     <?php
