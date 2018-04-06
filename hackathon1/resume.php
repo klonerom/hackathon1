@@ -55,11 +55,6 @@ $perso2 = json_decode($contentPerso2);
                     <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
                 </div>
                 <div class="col-6">
-                    <?php if(isset($_GET['idCombat'])) {
-                    $idCombat = intval($_GET['idCombat']);
-                    var_dump($idCombat);
-                    $select = resume($idCombat);
-                    ?>
 
                     <table style="width:100%">
                         <tr>
@@ -69,8 +64,25 @@ $perso2 = json_decode($contentPerso2);
                         </tr>
                         <tr>
                             <?php $select = resume($idCombat);
-                            }?>
 
+                            
+                        $idCombat = intval($_GET['idCombat']);
+                        $combat = resume($idCombat);
+                        var_dump($combat);?>
+
+                        <table style="width:100%">
+                            <tr>
+                                <th>attaquant</th>
+                                <th>coup</th>
+                                <th>defenseur</th>
+                            </tr>
+                            <tr>
+                            <?php
+                                foreach ($combat as $step) {
+                                echo "<td>" . $step->attacking . $step->move . $step->defending . "</td>";
+                            }
+                        }?>
+>>>>>>> 2ca3bf506af9f80751cbfa056aa9b90dcaf04a27
                            </tr>
 
                         </table>
