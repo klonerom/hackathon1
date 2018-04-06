@@ -1,7 +1,9 @@
 <?php
 
 require_once ('../vendor/autoload.php');
+
 require_once ('header.php');
+
 
 use GuzzleHttp\Client;
 $client = new Client([
@@ -14,12 +16,14 @@ $response = $client->request('GET', 'all.json');
 $body = $response->getBody();
 $characters = json_decode($body);
 
-
 ?>
 
 
 
 <body>
+
+    <?php //include 'header.php'?>
+
     <div class="container">
         <form action="fight.php" method="post">
             <div class="row">
@@ -42,8 +46,7 @@ $characters = json_decode($body);
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="<?php echo $character->id?>" id="<?php echo $character->id?>">
                                 <label class="custom-control-label" for="<?php echo $character->id ?>"><h5
-                                            class="h5-card"><?php
-                                        echo $character->name; ?></h5>
+                                            class="h5-card"><?php echo $character->name; ?></h5>
                                 </label>
                             </div>
                         </div>

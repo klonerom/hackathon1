@@ -17,4 +17,15 @@ foreach ($images as $image) {?>
     <br>
     <?php
 }
+
+function resume($fightId) {
+    $select = $pdo->exec("SELECT * FROM attack WHERE id = $fightId");
+    $combat = $select->fetchAll();
+    foreach ($combat as $step) {
+        echo "<div>" . $step->attacking . $step->move . $step->defending . "</div>";
+    }
+}
+
+
+
 ?>
