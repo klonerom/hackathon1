@@ -1,7 +1,7 @@
 <?php
 
 require_once ('../vendor/autoload.php');
-
+require_once ('../private/bd.php');
 use GuzzleHttp\Client;
 
 $client = new Client([
@@ -26,6 +26,8 @@ $body = $responsePerso2->getBody();
 
 $contentPerso2 = $body->getContents();
 $perso2 = json_decode($contentPerso2);
+
+
 
 ?>
 
@@ -53,9 +55,31 @@ $perso2 = json_decode($contentPerso2);
                     <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
                 </div>
                 <div class="col-6">
-                    <?php if(isset($_GET['idContact'])) {
-                        resume($fightId);
-                    }?>
+                    <?php if(isset($_GET['idCombat'])) {
+                        $idCombat = intval($_GET['idCombat']);
+                        var_dump($idCombat);
+                        $select = resume($idCombat);
+
+                        $combat = $select->fetchAll();
+                        var_dump($combat);?>
+
+                        <table style="width:100%">
+                            <tr>
+                                <th>attaquant</th>
+                                <th>coup</th>
+                                <th>defenseur</th>
+                            </tr>
+                            <tr>
+                            <?php
+                                foreach ($combat as $step) {
+                                echo "<td>" . $step->attacking . $step->move . $step->defending . "</td>";
+                            }
+                        }?>
+                           </tr>
+
+                        </table>
+
+
                 </div>
                 <div class="col-md-3 bdr">
                     <img class="img-fight" src="<?php echo $perso2->images->md; ?>">

@@ -1,8 +1,8 @@
 <?php
 
 define("DSN", "mysql:host=localhost;dbname=hackathon1");
-define("USER", "root");
-define("PASS", "jecode4wcs");
+define("USER", "ben");
+define("PASS", "benoite");
 
 // Connection
 $pdo = new PDO(DSN, USER, PASS);
@@ -35,11 +35,9 @@ function win($attacking, $defending, $fightId) {
 }
 
 function resume($fightId) {
-    $select = $pdo->exec("SELECT * FROM attack WHERE id = $fightId");
-    $combat = $select->fetchAll();
-    foreach ($combat as $step) {
-        echo "<div>" . $step->attacking . $step->move . $step->defending . "</div>";
-    }
+    $select = $pdo->query("SELECT * FROM attack WHERE fight_id = $fightId");
+    return $select;
+
 }
 
 
