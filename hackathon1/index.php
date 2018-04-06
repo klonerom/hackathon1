@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once ('../vendor/autoload.php');
 
 require_once ('header.php');
@@ -24,11 +24,22 @@ $characters = json_decode($body);
 
     <?php //include 'header.php'?>
 
+
+
     <div class="container">
         <form action="fight.php" method="post">
             <div class="row">
+
+                <div class="col-md-12  text-center p-3">
                     <button type="submit" class="btn btn-primary btn-lg col-md-8 offset-md-2
-                    text-center">Fight !!!</button>
+                    text-center">Fight</button>
+                    <?php
+                    if(isset($_GET['echec'])){
+                        echo "<p>Merci de séléctionner 2 personnages</p>";
+                    }
+                    ?>
+                </div>
+
             </div>
             <div class="row">
                 <?php
@@ -161,6 +172,9 @@ $characters = json_decode($body);
                 ?>
             </div>
         </form>
+        <audio src="music/Let's%20Get%20Ready%20to%20Rumble!!%20___%20Michael%20Buffer.mp3" autoplay ></audio>
+
+
 
     </div>
 
