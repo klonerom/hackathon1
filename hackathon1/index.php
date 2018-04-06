@@ -27,9 +27,8 @@ $characters = json_decode($body);
     <div class="container">
         <form action="fight.php" method="post">
             <div class="row">
-                <div class="col-md-12  text-center p-3">
-                    <button type="submit" class="btn btn-primary btn-lg">Fight</button>
-                </div>
+                    <button type="submit" class="btn btn-primary btn-lg col-md-8 offset-md-2
+                    text-center">Fight !!!</button>
             </div>
             <div class="row">
                 <?php
