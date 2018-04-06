@@ -1,7 +1,8 @@
 <?php
-
+session_start();
 require_once '../vendor/autoload.php';
 require_once 'class/Fighter.php';
+
 
 use GuzzleHttp\Client;
 
@@ -12,8 +13,15 @@ $client = new Client([
     'timeout'  => 2.0,
 ]);
 
+if (!empty($_POST)) {
+    $fightersID = $_POST;
+    $caseID = array_keys($fightersID);
+    $_SESSION["idFighter1"] = $caseID[0];
+    $_SESSION["idFighter2"] = $caseID[1];
+}
+
 // Personnage 1 : requete
-$responsePerso1 = $client->request('GET', 'id/56.json');
+$responsePerso1 = $client->request('GET', "id/".$_SESSION["idFighter1"].".json");
 
 $body = $responsePerso1->getBody();
 
@@ -21,7 +29,7 @@ $contentPerso1 = $body->getContents();
 $persos1 = json_decode($contentPerso1);
 
 // Personnage 2 : requete
-$responsePerso2 = $client->request('GET', 'id/10.json');
+$responsePerso2 = $client->request('GET', "id/".$_SESSION["idFighter2"].".json");
 
 $body = $responsePerso2->getBody();
 
@@ -127,6 +135,7 @@ if ($fighter1->getPower() === 0) {
     $stopFight = 0;
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +148,7 @@ if ($fighter1->getPower() === 0) {
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body class="body-fight">
+    <body class="fire">
 
 
     <?php include 'header.php'?>
@@ -217,7 +226,7 @@ if ($fighter1->getPower() === 0) {
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-10 ">
                         <div class="row">
                             <div class="col-md-2 section-fight bdr text-center">
                                 <p> INT </p>
@@ -303,7 +312,7 @@ if ($fighter1->getPower() === 0) {
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-10 offset-md-2">
                         <div class="row">
                             <div class="col-md-2 section-fight bdr text-center">
                                 <p> INT </p>

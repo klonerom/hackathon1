@@ -11,6 +11,10 @@ require_once ('../vendor/autoload.php');
         <meta charset="utf-8" >
         <title>La wild Arena</title>
         <link rel="stylesheet" href="style.css">
+
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
     </head>
 
 
@@ -35,5 +39,4 @@ require_once ('../vendor/autoload.php');
             </div>
         </div>
         <br>
-    </body>
-<html>
+
