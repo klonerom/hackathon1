@@ -35,7 +35,7 @@ $characters = json_decode($body);
     <?php include 'header.php'?>
 
     <div class="container">
-        <form action="index.php" method="post">
+        <form action="fight.php" method="post">
             <div class="row">
                 <div class="col-md-12  text-center p-3">
                     <button type="submit" class="btn btn-primary btn-lg">Fight</button>

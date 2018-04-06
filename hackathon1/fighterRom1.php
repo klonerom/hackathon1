@@ -130,7 +130,7 @@ if ($fighter1->getPower() === 0) {
     echo '<p>' . $fighter2->getName() . ' est mort !</p>';
     echo '<p>' . $fighter1->getName() . ' is the WINNER !</p>';
 
-    $stopFight = $fighter2->getId();;
+    $stopFight = $fighter2->getId();
 
 } else {
     echo '<p>Fighter1 : Power : ' . $fighter1->getPower() . '</p>';

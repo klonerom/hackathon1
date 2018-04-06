@@ -24,9 +24,15 @@
 .btn-card {
     white-space: normal;
     margin-bottom: 20px;
+
 }
 
 .btn-primary{
+     background-color: darkorange;
+     border-color: darkred;
+ }
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
     background-color: darkorange;
     border-color: darkred;
 }

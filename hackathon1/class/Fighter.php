@@ -1,4 +1,5 @@
 <?php
+require_once '../private/bd.php';
 
 class Fighter
 {
@@ -11,6 +12,7 @@ class Fighter
     private $durability;
     private $power;
     private $combat;
+    private $fightId;
 
 
     public function __construct(array $donnees)
@@ -26,6 +28,7 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->punchDamage();
         }
+        $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a punché dans sa face ', $perso->getId(), $fightId)");
     }
 
     public function kick(Fighter $perso)
@@ -35,7 +38,7 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->kickDamage();
         }
-
+        $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a donné un kick à ', $perso->getId(), $fightId)");
     }
 
     public function special(Fighter $perso)
@@ -45,12 +48,12 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->specialDamage();
         }
+        $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a utilisé son coup spécial sur ', $perso->getId(), $fightId)");
     }
-
 
     public function punchDamage()
     {
-        $this->damage = 15;
+        $this->damage = rand(10,40);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -62,7 +65,7 @@ class Fighter
     
     public function kickDamage()
     {
-        $this->damage = 20;
+        $this->damage = rand(30,60);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -74,7 +77,7 @@ class Fighter
     
     public function specialDamage()
     {
-        $this->damage = 50;
+        $this->damage = rand(40,70);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -103,7 +106,7 @@ class Fighter
 
     // GETTERS //
 
-    public function getdamage()
+    public function getDamage()
     {
         return $this->damage;
     }
@@ -167,6 +170,14 @@ class Fighter
     }
 
     /**
+     * @return mixed
+     */
+    public function getFightId()
+    {
+        return $this->fightId;
+    }
+
+    /**
      * @param mixed $power
      */
     public function setPower($power)
@@ -175,7 +186,7 @@ class Fighter
     }
 
 
-    public function setdamage($damage)
+    public function setDamage($damage)
     {
         $damage = (int) $damage;
 
@@ -241,5 +252,13 @@ class Fighter
     public function setStrength($strength)
     {
         $this->strength = $strength;
+    }
+
+    /**
+     * @param mixed $strength
+     */
+    public function setFightId($fightId)
+    {
+        $this->fightId = $fightId;
     }
 }
