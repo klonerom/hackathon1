@@ -152,11 +152,7 @@ $characters = json_decode($body);
                                             <h6><?php if(isset($character)) { echo $character->biography->aliases[0];} ?></h6>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h4 class="text-center h4-modalTitle">Stat</h4>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
