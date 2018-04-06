@@ -1,7 +1,6 @@
 <?php
 
 require_once ('../vendor/autoload.php');
-require_once ('header.php');
 var_dump($_POST);
 
 use GuzzleHttp\Client;
@@ -32,6 +31,9 @@ $characters = json_decode($body);
 </head>
 
 <body>
+
+    <?php include 'header.php'?>
+
     <div class="container">
         <form action="index.php" method="post">
             <div class="row">
@@ -54,8 +56,7 @@ $characters = json_decode($body);
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="<?php echo $character->id?>" id="<?php echo $character->id?>">
                                 <label class="custom-control-label" for="<?php echo $character->id ?>"><h5
-                                            class="h5-card"><?php
-                                        echo $character->name; ?></h5>
+                                            class="h5-card"><?php echo $character->name; ?></h5>
                                 </label>
                             </div>
                         </div>
