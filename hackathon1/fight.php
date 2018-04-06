@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../private/bd.php';
 require_once '../vendor/autoload.php';
 require_once 'class/Fighter.php';
 
@@ -18,6 +19,15 @@ if (!empty($_POST)) {
     $caseID = array_keys($fightersID);
     $_SESSION["idFighter1"] = $caseID[0];
     $_SESSION["idFighter2"] = $caseID[1];
+
+    $query = "INSERT INTO fight(id_playerOne, id_playerTwo) VALUES (" . $caseID[0] . ", " . $caseID[1] . ")";
+    $insert = $pdo->exec($query);
+    $select = $pdo->query("SELECT id FROM fight");
+    $fightIds = $select->fetchAll(PDO::FETCH_OBJ);
+    foreach ($fightIds as $fight) {
+        $fightId = $fight;
+    }
+    $fightId = $fightId->id;
 }
 if(!isset($_SESSION["idFighter2"])){
     header('location:index.php?echec=1');die;
@@ -66,6 +76,14 @@ $fighter2 = new Fighter([
 $button1 = '';
 $button2 = '';
 
+if (!empty($_GET['fightId'])) {
+    $fightId = $_GET['fightId'];
+    $name1 = $fighter1->getName();
+    $name2 = $fighter2->getName();
+    $id1 = $fighter1->getId();
+    $id2 = $fighter2->getId();
+}
+
 if (!empty($_GET['power1'])) {
     $fighter1->setPower($_GET['power1']);
 }
@@ -78,38 +96,44 @@ if (!empty($_GET['kick1'])) {
     $fighter1->kick($fighter2);
     $button1 = 'disabled';
     $button2 = '';
+    $query = "INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', 'a donne un kick a ', '$name2', $fightId)";
+    $insert = $pdo->exec($query);
 }
 
 if (!empty($_GET['kick2'])) {
     $fighter2->kick($fighter1);
     $button1 = '';
     $button2 = 'disabled';
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name2', ' a donne un kick a ', '$name1', $fightId)");
 }
 
 if (!empty($_GET['punch1'])) {
     $fighter1->punch($fighter2);
     $button1 = 'disabled';
     $button2 = '';
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' a donne un grand coup de boule a ', '$name2', $fightId)");
 }
 
 if (!empty($_GET['punch2'])) {
     $fighter2->punch($fighter1);
     $button1 = '';
     $button2 = 'disabled';
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name2', ' a donne un grand coup de boule a ', '$name1', $fightId)");
 }
 
 if (!empty($_GET['special1'])) {
     $fighter1->special($fighter2);
     $button1 = 'btn btn-secondary disabled';
     $button2 = 'btn btn-primary';
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' a utilise son coup special sur ', '$name2', $fightId)");
 }
 
 if (!empty($_GET['special2'])) {
     $fighter2->special($fighter1);
     $button1 = '';
     $button2 = 'disabled';
+    $insert = $pdo->exec("INSERT INTO attack(attacking, move, defending, fight_id) VALUES ('$name2', ' a utilise son coup special sur ', '$name1', $fightId)");
 }
-
 
 //WINNER ?
 if ($fighter1->getPower() === 0) {
@@ -119,7 +143,9 @@ if ($fighter1->getPower() === 0) {
 
     $stopFight = $fighter1->getId();
 
-    header('Location: resume.php?idCombat=1&idWinner=' . $fighter2->getId());
+    $insert = $pdo->exec("INSERT INTO attack(attacking, move, defending, fight_id) VALUES ('$name2', ' a vaincu avec bravoure et panache ', '$name1', $fightId)");
+
+    header('Location: resume.php?idCombat=' . $fightId . '&idWinner=' . $id2);
     die;
 
 } elseif ($fighter2->getPower() === 0) {
@@ -129,7 +155,9 @@ if ($fighter1->getPower() === 0) {
 
     $stopFight = $fighter2->getId();
 
-    header('Location: resume.php?idCombat=1&idWinner=' . $fighter1->getId());
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' a vaincu avec bravoure et panache ', '$name2', $fightId)");
+
+    header('Location: resume.php?idCombat=' . $fightId . '&idWinner=' . $id1);
     die;
 
 } else {
@@ -438,38 +466,45 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
         ?>
 
         <form action="" method="get" id="kick1">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
         </form>
 
 
-        <form action="" method="get" id="kick2">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+        <form action="" method="get" id="kick2">       
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
         </form>
 
 
         <form action="" method="get" id="punch1">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
         </form>
 
 
         <form action="" method="get" id="punch2">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
         </form>
 
 
         <form action="" method="get" id="special1">
             <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
             <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
         </form>
 
 
         <form action="" method="get" id="special2">
             <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
             <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
+            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
         </form>
 
         <?php
