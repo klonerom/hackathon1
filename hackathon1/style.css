@@ -44,13 +44,13 @@
     border-color: darkred;
 }
 
-/* style AUrélien*/
+/* Page Arena*/
 
-.body-header {
-    background-color: darkred;
+p{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
     color: white;
 }
-
 
 .h1-fight, .h2-fight, .h3-fight{
     text-align: center;
@@ -66,16 +66,6 @@
     background-color: darkred;
 }
 
-.h2-header{
-    width: 300px;
-    border: solid;
-    border-radius: 10px;
-    background-color: darkred;
-    margin: auto;
-    text-align: center;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 20px;
-}
 
 .PV-fight{
     margin: 10px;
@@ -91,13 +81,6 @@
     width: 400px;
 }
 
-.img-vs{
-    height: 100px;
-    width: 100px;
-    display: block;
-    margin: auto;
-}
-
 .btn-attack{
     margin: auto;
 }
@@ -107,9 +90,35 @@
     margin: 5px;
 }
 
-
 .section-fight{
     background-color: darkred;
+}
+
+.bdr-speciality-top{
+    border-radius: 20px 20px 0px 0px;
+}
+.bdr-speciality-bottom{
+    border-radius: 0px 0px 20px 0px;
+}
+
+.bdr-speciality-bottom-left {
+    border-radius: 0px 0px 0px 20px;
+}
+
+
+
+
+
+/* Header*/
+.h2-header{
+    width: 300px;
+    border: solid;
+    border-radius: 10px;
+    background-color: darkred;
+    margin: auto;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
 }
 
 .section-header{
@@ -118,13 +127,8 @@
     border-radius: 10px;
 }
 
-.section-no-color{
-    background-color: none;
-}
-
-p{
-    font-family: 'Press Start 2P', cursive;
-    font-size: 15px;
+.body-header {
+    background-color: darkred;
     color: white;
 }
 
@@ -142,7 +146,7 @@ a:link{
     border-color: white;
 
 }
-/*-- fin partie AUrélien*/
+/*-- Modal*/
 
 .p-pedigree {
     font-weight: bold;
@@ -163,7 +167,6 @@ h6 {
 /*couleurs progress-bar*/
 .progress-bar-intelligence{
    background-color: #6eff33;
-    font-size: 200px;
 }
 
 .progress-bar-strength{
