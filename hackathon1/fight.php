@@ -96,7 +96,7 @@ if (!empty($_GET['kick1'])) {
     $fighter1->kick($fighter2);
     $button1 = 'disabled';
     $button2 = '';
-    $query = "INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', 'a donne un kick a ', '$name2', $fightId)";
+    $query = "INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', 'pulverise avec un Kamehameha ', '$name2', $fightId)";
     $insert = $pdo->exec($query);
 }
 
@@ -104,35 +104,35 @@ if (!empty($_GET['kick2'])) {
     $fighter2->kick($fighter1);
     $button1 = '';
     $button2 = 'disabled';
-    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name2', ' a donne un kick a ', '$name1', $fightId)");
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name2', 'atomise avec un Kamehameha ', '$name1', $fightId)");
 }
 
 if (!empty($_GET['punch1'])) {
     $fighter1->punch($fighter2);
     $button1 = 'disabled';
     $button2 = '';
-    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' a donne un grand coup de boule a ', '$name2', $fightId)");
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' destroy avec un grand Hadoken  ', '$name2', $fightId)");
 }
 
 if (!empty($_GET['punch2'])) {
     $fighter2->punch($fighter1);
     $button1 = '';
     $button2 = 'disabled';
-    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name2', ' a donne un grand coup de boule a ', '$name1', $fightId)");
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name2', ' explose avec un grand Hadoken  ', '$name1', $fightId)");
 }
 
 if (!empty($_GET['special1'])) {
     $fighter1->special($fighter2);
     $button1 = 'btn btn-secondary disabled';
     $button2 = 'btn btn-primary';
-    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' a utilise son coup special sur ', '$name2', $fightId)");
+    $insert = $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ('$name1', ' electrise avec son Fatal-Foudre ', '$name2', $fightId)");
 }
 
 if (!empty($_GET['special2'])) {
     $fighter2->special($fighter1);
     $button1 = '';
     $button2 = 'disabled';
-    $insert = $pdo->exec("INSERT INTO attack(attacking, move, defending, fight_id) VALUES ('$name2', ' a utilise son coup special sur ', '$name1', $fightId)");
+    $insert = $pdo->exec("INSERT INTO attack(attacking, move, defending, fight_id) VALUES ('$name2', ' defibrile avec son Fatal-Foudre ', '$name1', $fightId)");
 }
 
 //WINNER ?
@@ -167,7 +167,7 @@ if ($fighter1->getPower() === 0) {
     $stopFight = 0;
 }
 
-$boxe = ['Kamehameha','coup2','coup3','coup4','coup5','coup6','coup7','coup8', 'coup9','coup10'];
+/*$boxe = ['Kamehameha','coup2','coup3','coup4','coup5','coup6','coup7','coup8', 'coup9','coup10'];
 $selecteBoxe = $boxe[rand(0,9)];
 $selecteBoxe1 = $boxe[rand(0,9)];
 
@@ -179,7 +179,7 @@ $specialHit = ['Fatal-Foudre','Psycho Blast','Borscht Dynamite
 ','Drago-Rage','Tir de l\'aigle','Landmaster','Peau de banane
 ','Laser Eyes', 'Force du Jedi','Zidane il a frappé'];
 $selecteSpecial = $specialHit[rand(0,9)];
-$selecteSpecial1 = $specialHit[rand(0,9)]
+$selecteSpecial1 = $specialHit[rand(0,9)]*/
 
 
 
@@ -203,7 +203,7 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
     <?php include 'header.php'?>
 
     <div class="container-fluid">
-           <<div class="row">
+           <div class="row">
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12">
@@ -224,12 +224,12 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
                     <div class="row">
                         <div class="col-md-3 bdr btn-attack">
                             <button type="submit" form="kick1"  name="kick1" class="btn btn-primary btn-lg btn-1 btn-hit"
-                                    value="1" <?= $button1 ?>><?php echo $selecteBoxe1 ?></button>
+                                    value="1" <?= $button1 ?>>Kamehameha</button>
                             <button type="submit" form="punch1"  name="punch1" class="btn btn-primary btn-lg btn-2 btn-hit"
                                     value="3"
-                                <?= $button1 ?>><?php echo $selecteKick1 ?></button> <br>
+                                <?= $button1 ?>>Hadoken</button> <br>
                             <button type="submit" form="special1"  name="special1" class="btn btn-primary btn-lg btn-3 btn-hit"
-                            value="5" <?= $button1 ?>><?php echo $selecteSpecial1 ?></button> <br>
+                            value="5" <?= $button1 ?>>Fatal-Foudre</button> <br>
                         </div>
                         <div class="col-md-5 bdr">
                             <img class="img-fight" src="<?php echo $persos1->images->md; ?>">
@@ -265,12 +265,12 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
                         <div class="col-md-2 bdr btn-attack">
                             <button type="submit" form="kick2" name="kick2" class="btn btn-primary btn-lg btn-1 btn-hit"
                                     value="2"
-                                <?= $button2 ?>><?php echo $selecteBoxe ?></button> <br>
+                                <?= $button2 ?>>Kamehameha</button> <br>
                             <button type="submit" form="punch2" name="punch2" class="btn btn-primary btn-lg btn-2 btn-hit"
                                     value="4"
-                            <?= $button2 ?>><?php echo $selecteKick ?></button> <br>
+                            <?= $button2 ?>>Hadoken</button> <br>
                             <button type="submit" form="special2" name="special2" class="btn btn-primary btn-lg btn-2 btn-hit"
-                            value="6" <?= $button2 ?>><?php echo $selecteSpecial ?></button>
+                            value="6" <?= $button2 ?>>Fatal-Foudre</button>
                         </div>
                     </div>
                 </div>
