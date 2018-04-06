@@ -57,10 +57,7 @@ $perso2 = json_decode($contentPerso2);
                 <div class="col-6">
                     <?php if(isset($_GET['idCombat'])) {
                         $idCombat = intval($_GET['idCombat']);
-                        var_dump($idCombat);
-                        $select = resume($idCombat);
-
-                        $combat = $select->fetchAll();
+                        $combat = resume($idCombat);
                         var_dump($combat);?>
 
                         <table style="width:100%">
