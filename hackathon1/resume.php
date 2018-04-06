@@ -56,52 +56,36 @@ if (!empty($_GET['idWinner'])) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-center">Resumé du combat</h2>
-                </div>
-                <div class="col-md-3 bdr">
-                    <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
                     <p class="display-5"><?= $perso1->name ?> est le vainqueur !</p>
+                    <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
+                    <h2 class="text-center h2-winner">Resumé du combat</h2>
                 </div>
-                <div class="col-6">
+            </div>
+            <div class="row">
+                <div class="col-md-3 bdr"></div>
+                <div class="col-md-6">
+
                     <?php if(isset($_GET['idCombat'])) {
                     $idCombat = intval($_GET['idCombat']);
                     $query = "SELECT * FROM attack WHERE fight_id = $idCombat";
                     $select = $pdo->query($query);
                     $combat = $select->fetchAll();
                     ?>
-
-                        <table style="width:100%">
-                            <tr>
-                                <th>Attaquant</th>
-                                <th>Coup</th>
-                                <th>Defenseur</th>
-                            </tr>
-
-                            <?php
-                                foreach ($combat as $step) {?>
-                                    <tr>
-                                        <td><?= $step['attacking'] ?></td>
-                                        <td><?= $step['move'] ?></td>
-                                        <td><?= $step['defending'] ?></td>
-                                    </tr>
+                    <?php
+                        foreach ($combat as $step) {?>
+                            <p class="p-resume"><?= $step['attacking'] . ' ' . $step['move'] . ' ' .
+                                $step['defending']?></p>
                               <?php
                             }
                         }?>
 
-
-                        </table>
-
-
                 </div>
-                <div class="col-md-3 bdr">
-                    <img class="img-fight" src="<?php echo $perso2->images->md; ?>">
-                </div>
-
             </div>
-
-
-
         </div>
+
+    <a href="index.php" class="btn btn-primary">Retour choix des combattants</a>
+
+
 
 
         <div id="scrollUp">
