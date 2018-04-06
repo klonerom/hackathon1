@@ -79,7 +79,7 @@ if (!empty($_GET['idWinner'])) {
                             }
                         }?>
 
-                    <div class="col-md-4 btn-change-perso">
+                    <div class="col-md-6 btn-change-perso">
                         <a href="index.php" ><h2 class="h2-header link-menu a-return">Retour choix des
                                 combattants</h2></a>
                     </div>

@@ -10,13 +10,15 @@
 }
 
 .p-resume{
-    font-family: cursive;
+    font-family: 'Press Start 2P', cursive;
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .h2-winner{
     margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
 }
 #scrollUp {
     position: fixed;
@@ -101,6 +103,8 @@ p{
 .display-5{
     margin: auto;
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
 }
 
 .img-fight{

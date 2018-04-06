@@ -461,7 +461,7 @@ $selecteSpecial1 = $specialHit[rand(0,9)]*/
         <div class="col-md-4 btn-change-perso">
             <a href="index.php"><h2 class="h2-header link-menu"> Changer vos personnages </h2></a>
         </div>
-        <audio src="music/Mortal%20Kombat%20Theme%20Song%20Original.mp3" autoplay loop></audio>
+
 
 
     <?php
