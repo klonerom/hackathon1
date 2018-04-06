@@ -31,8 +31,8 @@ $characters = json_decode($body);
             <div class="row">
 
                 <div class="col-md-12  text-center p-3">
-                    <button type="submit" class="btn btn-primary btn-lg col-md-8 offset-md-2
-                    text-center">Fight</button>
+                    <button type="submit" class="btn btn-primary btn-lg col-md-8
+                    text-center link-menu">Fight !!!</button>
                     <?php
                     if(isset($_GET['echec'])){
                         echo "<p>Merci de séléctionner 2 personnages</p>";
@@ -41,7 +41,7 @@ $characters = json_decode($body);
                 </div>
 
             </div>
-            <div class="row">
+            <div class="row justify-content-md-center">
                 <?php
                 foreach ($characters as $character) {
                 ?>

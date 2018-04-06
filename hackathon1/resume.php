@@ -57,7 +57,7 @@ if (!empty($_GET['idWinner'])) {
             <div class="row">
                 <div class="col-12">
                     <p class="display-5"><?= $perso1->name ?> est le vainqueur !</p>
-                    <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
+                    <img class="img-fight img-winner" src="<?php echo $perso1->images->md; ?>">
                     <h2 class="text-center h2-winner">Resumé du combat</h2>
                 </div>
             </div>
@@ -79,11 +79,16 @@ if (!empty($_GET['idWinner'])) {
                             }
                         }?>
 
+                    <div class="col-md-4 btn-change-perso">
+                        <a href="index.php" ><h2 class="h2-header link-menu a-return">Retour choix des
+                                combattants</h2></a>
+                    </div>
                 </div>
+
             </div>
         </div>
 
-    <a href="index.php" class="btn btn-primary">Retour choix des combattants</a>
+
 
 
 

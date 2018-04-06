@@ -12,6 +12,7 @@
 .p-resume{
     font-family: cursive;
     text-align: center;
+    font-size: 20px;
 }
 
 .h2-winner{
@@ -34,6 +35,10 @@
 }
 .btn-lg {
     font-family: 'Press Start 2P', cursive;
+    background-color: darkorange;
+}
+.btn-hit{
+    font-family: cursive;
 }
 .section-header{
     margin: 20px auto;
@@ -103,7 +108,10 @@ p{
     display: block;
     height: 280px;
     width: 280px;
+}
 
+.img-winner{
+    margin : 20px auto;
 }
 
 .btn-attack{
@@ -160,7 +168,7 @@ a:link{
     color: white;
 }
 .link-menu, .link-menu:focus {
-    background-color: darkred;
+    background-color: darkorange;
     border-color: white;
 }
 
@@ -253,3 +261,8 @@ audio{
     margin: auto;
 }
 
+.a-return{
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 50px;
+}

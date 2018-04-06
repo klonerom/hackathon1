@@ -223,11 +223,12 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
 
                     <div class="row">
                         <div class="col-md-3 bdr btn-attack">
-                            <button type="submit" form="kick1"  name="kick1" class="btn btn-primary btn-lg btn-1"
+                            <button type="submit" form="kick1"  name="kick1" class="btn btn-primary btn-lg btn-1 btn-hit"
                                     value="1" <?= $button1 ?>><?php echo $selecteBoxe1 ?></button>
-                            <button type="submit" form="punch1"  name="punch1" class="btn btn-primary btn-lg btn-2" value="3"
+                            <button type="submit" form="punch1"  name="punch1" class="btn btn-primary btn-lg btn-2 btn-hit"
+                                    value="3"
                                 <?= $button1 ?>><?php echo $selecteKick1 ?></button> <br>
-                            <button type="submit" form="special1"  name="special1" class="btn btn-primary btn-lg btn-3"
+                            <button type="submit" form="special1"  name="special1" class="btn btn-primary btn-lg btn-3 btn-hit"
                             value="5" <?= $button1 ?>><?php echo $selecteSpecial1 ?></button> <br>
                         </div>
                         <div class="col-md-5 bdr">
@@ -262,11 +263,13 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
                             <img class="img-fight" src="<?php echo $persos2->images->md; ?>">
                         </div>
                         <div class="col-md-2 bdr btn-attack">
-                            <button type="submit" form="kick2" name="kick2" class="btn btn-primary btn-lg btn-1" value="2"
+                            <button type="submit" form="kick2" name="kick2" class="btn btn-primary btn-lg btn-1 btn-hit"
+                                    value="2"
                                 <?= $button2 ?>><?php echo $selecteBoxe ?></button> <br>
-                            <button type="submit" form="punch2" name="punch2" class="btn btn-primary btn-lg btn-2" value="4"
+                            <button type="submit" form="punch2" name="punch2" class="btn btn-primary btn-lg btn-2 btn-hit"
+                                    value="4"
                             <?= $button2 ?>><?php echo $selecteKick ?></button> <br>
-                            <button type="submit" form="special2" name="special2" class="btn btn-primary btn-lg btn-2"
+                            <button type="submit" form="special2" name="special2" class="btn btn-primary btn-lg btn-2 btn-hit"
                             value="6" <?= $button2 ?>><?php echo $selecteSpecial ?></button>
                         </div>
                     </div>
@@ -467,44 +470,44 @@ $selecteSpecial1 = $specialHit[rand(0,9)]
 
         <form action="" method="get" id="kick1">
 
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
-            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="fightId" value="<?= $fightId ?>">
         </form>
 
 
         <form action="" method="get" id="kick2">       
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
-            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="fightId" value="<?= $fightId ?>">
         </form>
 
 
         <form action="" method="get" id="punch1">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
-            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="fightId" value="<?= $fightId ?>">
         </form>
 
 
         <form action="" method="get" id="punch2">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
-            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="fightId" value="<?= $fightId ?>">
         </form>
 
 
         <form action="" method="get" id="special1">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
-            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="fightId" value="<?= $fightId ?>">
         </form>
 
 
         <form action="" method="get" id="special2">
-            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>"><br>
-            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>"><br>
-            <input type="hidden" name="fightId" value="<?= $fightId ?>"><br>
+            <input type="hidden" name="power1" value="<?= $fighter1->getPower() ?>">
+            <input type="hidden" name="power2" value="<?= $fighter2->getPower() ?>">
+            <input type="hidden" name="fightId" value="<?= $fightId ?>">
         </form>
 
         <?php
