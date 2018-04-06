@@ -138,8 +138,9 @@ p{
 
 .section-header{
     border: solid;
-    background-color: darkred;
+    background-color: rgb(249, 126, 24);
     border-radius: 10px;
+    border-color: white;
 }
 
 .body-header {
@@ -185,25 +186,59 @@ h6 {
 /*couleurs progress-bar*/
 .progress-bar-intelligence{
    background-color: #6eff33;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: black;
 }
 
 .progress-bar-strength{
     background-color: #ff33f9;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: black;
 }
 
 .progress-bar-speed{
     background-color: #ffa233;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: black;
+
 }
 
 .progress-bar-durability{
     background-color: #5233ff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: black;
+
 }
 
 .progress-bar-power{
     background-color: #ff3333;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: black;
+
 }
 
 .progress-bar-combat{
     background-color: #f9ff33;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: black;
+}
+
+.progress-bar-life{
+    background-color: darkred;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    color: white;
+}
+
+audio{
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 

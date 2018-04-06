@@ -135,6 +135,24 @@ if ($fighter1->getPower() === 0) {
     $stopFight = 0;
 }
 
+$boxe = ['Kamehameha','coup2','coup3','coup4','coup5','coup6','coup7','coup8', 'coup9','coup10'];
+$selecteBoxe = $boxe[rand(0,9)];
+$selecteBoxe1 = $boxe[rand(0,9)];
+
+$kick = ['Hadoken','DoubleKick','coup3','coup4','coup5','coup6','coup7','coup8', 'coup9','coup10'];
+$selecteKick = $kick[rand(0,9)];
+$selecteKick1 = $kick[rand(0,9)];
+
+$specialHit = ['Fatal-Foudre','Psycho Blast','Borscht Dynamite
+','Drago-Rage','Tir de l\'aigle','Landmaster','Peau de banane
+','Laser Eyes', 'Force du Jedi','Zidane il a frappé'];
+$selecteSpecial = $specialHit[rand(0,9)];
+$selecteSpecial1 = $specialHit[rand(0,9)]
+
+
+
+
+
 
 ?>
 
@@ -150,292 +168,263 @@ if ($fighter1->getPower() === 0) {
 
     <body class="fire">
 
-
     <?php include 'header.php'?>
 
     <div class="container-fluid">
-        <div class="body-fight">
-            <div class="row">
-                <div class="col-md-5 col-md-offset-2 bdr">
-                    <h2 class="h2-fight"> <?php echo $persos1->name; ?></h2>
-                </div>
-                <div class="col-md-2 bdr">
-                </div>
-                <div class="col-md-5 bdr">
-                    <h2 class="h2-fight"> <?php echo $persos2->name; ?> </h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5 bdr">
-                    <h3 class="h3-fight"> Points de vie</h3>
-                    <div class="progress PV-fight">
-                        <div class="progress-bar" role="progressbar" style="width: <?= $fighter1->getPower() ?>%;"
-                             aria-valuenow=" <?= $fighter1->getPower() ?>"
-                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getPower() ?>%</div>
+           <<div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="h2-fight"> <?php echo $persos1->name; ?></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1 bdr">
+                            <h3 class="h3-fight"> Points de vie</h3>
+                            <div class="progress PV-fight">
+                                <div class="progress-bar progress-bar-life" role="progressbar" style="width: <?=$fighter1->getPower() ?>%;"
+                                     aria-valuenow=" <?= $fighter1->getPower() ?>"
+                                     aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getPower() ?>%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 bdr btn-attack">
+                            <button type="submit" form="kick1"  name="kick1" class="btn btn-primary btn-lg btn-1"
+                                    value="1" <?= $button1 ?>><?php echo $selecteBoxe1 ?></button>
+                            <button type="submit" form="punch1"  name="punch1" class="btn btn-primary btn-lg btn-2" value="3"
+                                <?= $button1 ?>><?php echo $selecteKick1 ?></button> <br>
+                            <button type="submit" form="special1"  name="special1" class="btn btn-primary btn-lg btn-3"
+                            value="5" <?= $button1 ?>><?php echo $selecteSpecial1 ?></button> <br>
+                        </div>
+                        <div class="col-md-5 bdr">
+                            <img class="img-fight" src="<?php echo $persos1->images->md; ?>">
+                        </div>
+                        <div class="col-md-1 bdr">
+                            <img src="http://www.gifgratis.net/gifs_animes/eclair/10.gif" height="300px">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-5 bdr">
-                    <h3 class="h3-fight"> Points de vie</h3>
-                    <div class="progress PV-fight">
-                        <div class="progress-bar" role="progressbar" style="width: <?= $fighter2->getPower() ?>%;" aria-valuenow="<?= $fighter2->getPower() ?>"
-                             aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getPower() ?>%</div>
+                
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="h2-fight"> <?php echo $persos2->name; ?></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1 bdr">
+                            <h3 class="h3-fight"> Points de vie</h3>
+                            <div class="progress PV-fight">
+                                <div class="progress-bar progress-bar-life" role="progressbar" style="width: <?=
+                                $fighter2->getPower() ?>%;"
+                                     aria-valuenow=" <?= $fighter2->getPower() ?>"
+                                     aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getPower() ?>%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-md-2 bdr">
+                            <img class="img-fight" src="<?php echo $persos2->images->md; ?>">
+                        </div>
+                        <div class="col-md-2 bdr btn-attack">
+                            <button type="submit" form="kick2" name="kick2" class="btn btn-primary btn-lg btn-1" value="2"
+                                <?= $button2 ?>><?php echo $selecteBoxe ?></button> <br>
+                            <button type="submit" form="punch2" name="punch2" class="btn btn-primary btn-lg btn-2" value="4"
+                            <?= $button2 ?>><?php echo $selecteKick ?></button> <br>
+                            <button type="submit" form="special2" name="special2" class="btn btn-primary btn-lg btn-2"
+                            value="6" <?= $button2 ?>><?php echo $selecteSpecial ?></button>
+                        </div>
                     </div>
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-md-2 bdr btn-attack">
-                    <button type="submit" form="kick1"  name="kick1" class="btn btn-primary btn-lg btn-1" value="1" <?= $button1 ?>>Kamehameha</button>
-                    <button type="submit" form="punch1"  name="punch1" class="btn btn-primary btn-lg btn-2" value="3"
-                        <?= $button1 ?>>Hadoken</button> <br>
-                    <button type="submit" form="special1"  name="special1" class="btn btn-primary btn-lg btn-3"
-                            value="5" <?= $button1 ?>>Fatal-Foudre</button> <br>
-                </div>
-                <div class="col-md-3 bdr">
-                    <img class="img-fight" src="<?php echo $persos1->images->md; ?>">
-                </div>
-                <div class="col-md-2 bdr">
-                    <img class="img-fight" src="http://www.gifgratis.net/gifs_animes/eclair/10.gif">
-                </div>
-                <div class="col-md-3 bdr">
-                    <img class="img-fight" src="<?php echo $persos2->images->md; ?>">
-                </div>
-                <div class="col-md-2 bdr btn-attack">
-                    <button type="submit" form="kick2" name="kick2" class="btn btn-primary btn-lg btn-1" value="2"
-                        <?= $button2 ?>>Kamehameha</button> <br>
-                    <button type="submit" form="punch2" name="punch2" class="btn btn-primary btn-lg btn-2" value="4"
-                    <?= $button2 ?>>Hadoken</button> <br>
-                    <button type="submit" form="special2" name="special2" class="btn btn-primary btn-lg btn-2"
-                            value="6" <?= $button2 ?>>Fatal-Foudre</button>
-                    <br>
-                </div>
-
-            </div>
-        </div>
-        <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-10 offset-md-1 section-fight bdr-speciality-top bdr">
-                        <h3 class="h3-fight"> Caractéristiques</h3>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1 section-fight bdr-speciality-top bdr">
+                            <h3 class="h3-fight"> Caractéristiques</h3>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-10 offset-md-1 ">
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> INT </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-intelligence " role="progressbar" style="width: <?=
-                                    $fighter1->getIntelligence() ?>%"
-                                         aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1 ">
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> INT </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-intelligence " role="progressbar" style="width: <?=
+                                        $fighter1->getIntelligence() ?>%"
+                                             aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%
+                                        </div>
+                                     </div>
                                  </div>
-                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> STR </p>
                             </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight  ">
-                                    <div class="progress-bar progress-bar-strength " role="progressbar" style="width: <?=
-                                    $fighter1->getStrength()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter1->getStrength() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getStrength() ?>%
+
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> STR </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight  ">
+                                        <div class="progress-bar progress-bar-strength " role="progressbar" style="width: <?=
+                                        $fighter1->getStrength()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter1->getStrength() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getStrength() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> SPD </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-speed " role="progressbar" style="width: <?=
-                                    $fighter1->getSpeed()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter1->getSpeed() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getSpeed() ?>%
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> SPD </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-speed " role="progressbar" style="width: <?=
+                                        $fighter1->getSpeed()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter1->getSpeed() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getSpeed() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> DUR </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-durability" role="progressbar" style="width: <?=
-                                    $fighter1->getDurability()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter1->getDurability() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getDurability() ?>%
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> DUR </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-durability" role="progressbar" style="width: <?=
+                                        $fighter1->getDurability()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter1->getDurability() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getDurability() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr-speciality-bottom-left bdr text-center">
-                                <p> CMB </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr-speciality-bottom bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-combat" role="progressbar" style="width: <?=
-                                    $fighter1->getCombat()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter1->getCombat() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getCombat() ?>%
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr-speciality-bottom-left bdr text-center">
+                                    <p> CMB </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr-speciality-bottom bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-combat" role="progressbar" style="width: <?=
+                                        $fighter1->getCombat()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter1->getCombat() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getCombat() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-10 offset-md-1 section-fight bdr-speciality-top bdr">
-                        <h3 class="h3-fight"> Caractéristiques</h3>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1 section-fight bdr-speciality-top bdr">
+                            <h3 class="h3-fight"> Caractéristiques</h3>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-10 offset-md-1">
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> INT </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-intelligence" role="progressbar" style="width: <?=
-                                    $fighter2->getIntelligence() ?>%"
-                                         aria-valuenow="<?= $fighter2->getIntelligence() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getIntelligence() ?>%
-                                    </div>
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> INT </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-intelligence" role="progressbar" style="width: <?=
+                                        $fighter2->getIntelligence() ?>%"
+                                             aria-valuenow="<?= $fighter2->getIntelligence() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getIntelligence() ?>%
+                                        </div>
+                                     </div>
                                  </div>
-                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> STR </p>
                             </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-strength" role="progressbar" style="width: <?= $fighter2->getStrength()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter2->getStrength() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getStrength() ?>%
+
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> STR </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-strength" role="progressbar" style="width: <?= $fighter2->getStrength()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter2->getStrength() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getStrength() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> SPD </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-speed" role="progressbar" style="width: <?=
-                                    $fighter2->getSpeed()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter2->getSpeed() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getSpeed() ?>%
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> SPD </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-speed" role="progressbar" style="width: <?=
+                                        $fighter2->getSpeed()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter2->getSpeed() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getSpeed() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
-                                <p> DUR </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-durability" role="progressbar" style="width: <?=
-                                    $fighter2->getDurability()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter2->getDurability() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getDurability() ?>%
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr text-center">
+                                    <p> DUR </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-durability" role="progressbar" style="width: <?=
+                                        $fighter2->getDurability()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter2->getDurability() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getDurability() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-2 section-fight bdr-speciality-bottom-left bdr text-center">
-                                <p> CMB </p>
-                            </div>
-                            <div class="col-md-10 section-fight bdr-speciality-bottom bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar progress-bar-combat" role="progressbar" style="width: <?=
-                                    $fighter2->getCombat()
-                                    ?>%"
-                                         aria-valuenow="<?= $fighter2->getCombat() ?>%"
-                                         aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getCombat() ?>%
+                            <div class="row">
+                                <div class="col-md-2 section-fight bdr-speciality-bottom-left bdr text-center">
+                                    <p> CMB </p>
+                                </div>
+                                <div class="col-md-10 section-fight bdr-speciality-bottom bdr">
+                                    <div class="progress PV-fight ">
+                                        <div class="progress-bar progress-bar-combat" role="progressbar" style="width: <?=
+                                        $fighter2->getCombat()
+                                        ?>%"
+                                             aria-valuenow="<?= $fighter2->getCombat() ?>%"
+                                             aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getCombat() ?>%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
-        </div>
-
+        <audio src="music/Mortal%20Kombat%20Theme%20Song%20Original.mp3"  autoplay loop alt="Audio no supported"></audio>
 
     <?php
     if ($stopFight == 0) {
