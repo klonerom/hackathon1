@@ -9,6 +9,7 @@
     color:black;
 }
 
+
 #scrollUp {
     position: fixed;
     bottom : 50px;
@@ -119,6 +120,7 @@ p{
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     font-size: 20px;
+    margin: 20px auto;
 }
 
 .section-header{
@@ -158,6 +160,9 @@ a:link{
     color: black;
 }
 
+.modal-title{
+    font-family: 'Press Start 2P', cursive;
+}
 .modal-title,
 h6 {
     color:black;
