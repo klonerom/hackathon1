@@ -1,5 +1,4 @@
 <?php
-//require_once '../private/bd.php';
 
 class Fighter
 {
@@ -12,7 +11,6 @@ class Fighter
     private $durability;
     private $power;
     private $combat;
-    private $fightId;
 
 
     public function __construct(array $donnees)
@@ -28,7 +26,6 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->punchDamage();
         }
-        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a punché dans sa face ', $perso->getId(), $fightId)");
     }
 
     public function kick(Fighter $perso)
