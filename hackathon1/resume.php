@@ -11,21 +11,25 @@ $client = new Client([
     'timeout'  => 2.0,
 ]);
 
-// Personnage 1 : requete
-$responsePerso1 = $client->request('GET', 'id/56.json');
+if (!empty($_GET['idWinner'])) {
 
-$body = $responsePerso1->getBody();
+    // Personnage 1 : requete
+    $responsePerso1 = $client->request('GET', "id/".$_GET['idWinner'].".json");
 
-$contentPerso1 = $body->getContents();
-$perso1 = json_decode($contentPerso1);
+    $body = $responsePerso1->getBody();
+
+    $contentPerso1 = $body->getContents();
+    $perso1 = json_decode($contentPerso1);
 
 // Personnage 2 : requete
-$responsePerso2 = $client->request('GET', 'id/10.json');
+//    $responsePerso2 = $client->request('GET', 'id/10.json');
+//
+//    $body = $responsePerso2->getBody();
+//
+//    $contentPerso2 = $body->getContents();
+//    $perso2 = json_decode($contentPerso2);
 
-$body = $responsePerso2->getBody();
-
-$contentPerso2 = $body->getContents();
-$perso2 = json_decode($contentPerso2);
+}
 
 
 
@@ -47,43 +51,43 @@ $perso2 = json_decode($contentPerso2);
     <body>
 
         <?php include 'header.php'?>
-        <h2>Resumé</h2>
+
 
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center">Resumé du combat</h2>
+                </div>
                 <div class="col-md-3 bdr">
                     <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
+                    <p class="display-5"><?= $perso1->name ?> est le vainqueur !</p>
                 </div>
                 <div class="col-6">
-
-                    <table style="width:100%">
-                        <tr>
-                            <th>attaquant</th>
-                            <th>coup</th>
-                            <th>defenseur</th>
-                        </tr>
-                        <tr>
-                            <?php $select = resume($idCombat);
-
-                            
-                        $idCombat = intval($_GET['idCombat']);
-                        $combat = resume($idCombat);
-                        var_dump($combat);?>
+                    <?php if(isset($_GET['idCombat'])) {
+                    $idCombat = intval($_GET['idCombat']);
+                    $query = "SELECT * FROM attack WHERE fight_id = $idCombat";
+                    $select = $pdo->query($query);
+                    $combat = $select->fetchAll();
+                    ?>
 
                         <table style="width:100%">
                             <tr>
-                                <th>attaquant</th>
-                                <th>coup</th>
-                                <th>defenseur</th>
+                                <th>Attaquant</th>
+                                <th>Coup</th>
+                                <th>Defenseur</th>
                             </tr>
-                            <tr>
+
                             <?php
-                                foreach ($combat as $step) {
-                                echo "<td>" . $step->attacking . $step->move . $step->defending . "</td>";
+                                foreach ($combat as $step) {?>
+                                    <tr>
+                                        <td><?= $step['attacking'] ?></td>
+                                        <td><?= $step['move'] ?></td>
+                                        <td><?= $step['defending'] ?></td>
+                                    </tr>
+                              <?php
                             }
                         }?>
->>>>>>> 2ca3bf506af9f80751cbfa056aa9b90dcaf04a27
-                           </tr>
+
 
                         </table>
 

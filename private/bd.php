@@ -37,10 +37,9 @@ function win($attacking, $defending, $fightId) {
 function resume($fightId)
 {
     $select = $pdo->query("SELECT * FROM attack WHERE fight_id = $fightId");
-    $select->fetchAll();
-    foreach ($select as $step) {
-        echo "<td>" . $step->attacking . $step->move . $step->defending . "</td>";
-    }
+    $combat = $select->fetchAll();
+    return $combat;
+
 }
 
 
