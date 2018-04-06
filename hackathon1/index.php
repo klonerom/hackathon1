@@ -14,7 +14,6 @@ $response = $client->request('GET', 'all.json');
 $body = $response->getBody();
 $characters = json_decode($body);
 
-
 ?>
 
 
