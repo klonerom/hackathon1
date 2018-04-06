@@ -1,7 +1,8 @@
 <?php
-
+session_start();
 require_once '../vendor/autoload.php';
 require_once 'class/Fighter.php';
+
 
 use GuzzleHttp\Client;
 
@@ -12,8 +13,15 @@ $client = new Client([
     'timeout'  => 2.0,
 ]);
 
+if (!empty($_POST)) {
+    $fightersID = $_POST;
+    $caseID = array_keys($fightersID);
+    $_SESSION["idFighter1"] = $caseID[0];
+    $_SESSION["idFighter2"] = $caseID[1];
+}
+
 // Personnage 1 : requete
-$responsePerso1 = $client->request('GET', 'id/56.json');
+$responsePerso1 = $client->request('GET', "id/".$_SESSION["idFighter1"].".json");
 
 $body = $responsePerso1->getBody();
 
@@ -21,7 +29,7 @@ $contentPerso1 = $body->getContents();
 $persos1 = json_decode($contentPerso1);
 
 // Personnage 2 : requete
-$responsePerso2 = $client->request('GET', 'id/10.json');
+$responsePerso2 = $client->request('GET', "id/".$_SESSION["idFighter2"].".json");
 
 $body = $responsePerso2->getBody();
 
@@ -127,6 +135,7 @@ if ($fighter1->getPower() === 0) {
     $stopFight = 0;
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +148,7 @@ if ($fighter1->getPower() === 0) {
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body class="body-fight">
+    <body class="fire">
 
 
     <?php include 'header.php'?>
@@ -207,24 +216,25 @@ if ($fighter1->getPower() === 0) {
         </div>
         <br>
 
-        <div class="row">
 
+        <div class="row">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2 section-fight bdr">
+                    <div class="col-md-10 offset-md-1 section-fight bdr-speciality-top bdr">
                         <h3 class="h3-fight"> Caractéristiques</h3>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-10 offset-md-1 ">
                         <div class="row">
                             <div class="col-md-2 section-fight bdr text-center">
                                 <p> INT </p>
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getIntelligence() ?>%"
+                                    <div class="progress-bar progress-bar-intelligence " role="progressbar" style="width: <?=
+                                    $fighter1->getIntelligence() ?>%"
                                          aria-valuenow="<?= $fighter1->getIntelligence() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getIntelligence() ?>%
                                     </div>
@@ -237,8 +247,9 @@ if ($fighter1->getPower() === 0) {
                                 <p> STR </p>
                             </div>
                             <div class="col-md-10 section-fight bdr">
-                                <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getStrength()
+                                <div class="progress PV-fight  ">
+                                    <div class="progress-bar progress-bar-strength " role="progressbar" style="width: <?=
+                                    $fighter1->getStrength()
                                     ?>%"
                                          aria-valuenow="<?= $fighter1->getStrength() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getStrength() ?>%
@@ -253,7 +264,8 @@ if ($fighter1->getPower() === 0) {
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getSpeed()
+                                    <div class="progress-bar progress-bar-speed " role="progressbar" style="width: <?=
+                                    $fighter1->getSpeed()
                                     ?>%"
                                          aria-valuenow="<?= $fighter1->getSpeed() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getSpeed() ?>%
@@ -268,7 +280,8 @@ if ($fighter1->getPower() === 0) {
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getDurability()
+                                    <div class="progress-bar progress-bar-durability" role="progressbar" style="width: <?=
+                                    $fighter1->getDurability()
                                     ?>%"
                                          aria-valuenow="<?= $fighter1->getDurability() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getDurability() ?>%
@@ -278,12 +291,13 @@ if ($fighter1->getPower() === 0) {
                         </div>
 
                         <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
+                            <div class="col-md-2 section-fight bdr-speciality-bottom-left bdr text-center">
                                 <p> CMB </p>
                             </div>
-                            <div class="col-md-10 section-fight bdr">
+                            <div class="col-md-10 section-fight bdr-speciality-bottom bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter1->getCombat()
+                                    <div class="progress-bar progress-bar-combat" role="progressbar" style="width: <?=
+                                    $fighter1->getCombat()
                                     ?>%"
                                          aria-valuenow="<?= $fighter1->getCombat() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter1->getCombat() ?>%
@@ -297,20 +311,20 @@ if ($fighter1->getPower() === 0) {
 
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2 section-fight bdr">
+                    <div class="col-md-10 offset-md-1 section-fight bdr-speciality-top bdr">
                         <h3 class="h3-fight"> Caractéristiques</h3>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-10 offset-md-1">
                         <div class="row">
                             <div class="col-md-2 section-fight bdr text-center">
                                 <p> INT </p>
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?=
+                                    <div class="progress-bar progress-bar-intelligence" role="progressbar" style="width: <?=
                                     $fighter2->getIntelligence() ?>%"
                                          aria-valuenow="<?= $fighter2->getIntelligence() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getIntelligence() ?>%
@@ -325,7 +339,7 @@ if ($fighter1->getPower() === 0) {
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter2->getStrength()
+                                    <div class="progress-bar progress-bar-strength" role="progressbar" style="width: <?= $fighter2->getStrength()
                                     ?>%"
                                          aria-valuenow="<?= $fighter2->getStrength() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getStrength() ?>%
@@ -340,7 +354,8 @@ if ($fighter1->getPower() === 0) {
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter2->getSpeed()
+                                    <div class="progress-bar progress-bar-speed" role="progressbar" style="width: <?=
+                                    $fighter2->getSpeed()
                                     ?>%"
                                          aria-valuenow="<?= $fighter2->getSpeed() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getSpeed() ?>%
@@ -355,7 +370,8 @@ if ($fighter1->getPower() === 0) {
                             </div>
                             <div class="col-md-10 section-fight bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter2->getDurability()
+                                    <div class="progress-bar progress-bar-durability" role="progressbar" style="width: <?=
+                                    $fighter2->getDurability()
                                     ?>%"
                                          aria-valuenow="<?= $fighter2->getDurability() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getDurability() ?>%
@@ -365,12 +381,13 @@ if ($fighter1->getPower() === 0) {
                         </div>
 
                         <div class="row">
-                            <div class="col-md-2 section-fight bdr text-center">
+                            <div class="col-md-2 section-fight bdr-speciality-bottom-left bdr text-center">
                                 <p> CMB </p>
                             </div>
-                            <div class="col-md-10 section-fight bdr">
+                            <div class="col-md-10 section-fight bdr-speciality-bottom bdr">
                                 <div class="progress PV-fight ">
-                                    <div class="progress-bar " role="progressbar" style="width: <?= $fighter2->getCombat()
+                                    <div class="progress-bar progress-bar-combat" role="progressbar" style="width: <?=
+                                    $fighter2->getCombat()
                                     ?>%"
                                          aria-valuenow="<?= $fighter2->getCombat() ?>%"
                                          aria-valuemin="0" aria-valuemax="100"><?= $fighter2->getCombat() ?>%

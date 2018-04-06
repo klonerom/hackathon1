@@ -1,8 +1,8 @@
 <?php
 
 define("DSN", "mysql:host=localhost;dbname=hackathon1");
-define("USER", "root");
-define("PASS", "jecode4wcs");
+define("USER", "ben");
+define("PASS", "benoite");
 
 // Connection
 $pdo = new PDO(DSN, USER, PASS);
@@ -25,12 +25,11 @@ function win($attacking, $defending, $fightId) {
     $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a vaincu avec bravoure et panache ', $defending, $fightId)");
 }
 
-function resume($fightId) {
-    $select = $pdo->exec("SELECT * FROM attack WHERE id = $fightId");
+function resume($fightId)
+{
+    $select = $pdo->query("SELECT * FROM attack WHERE fight_id = $fightId");
     $combat = $select->fetchAll();
-    foreach ($combat as $step) {
-        echo "<div>" . $step->attacking . $step->move . $step->defending . "</div>";
-    }
+    return $combat;
 }
 
 /*
