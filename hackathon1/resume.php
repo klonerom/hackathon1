@@ -56,25 +56,21 @@ $perso2 = json_decode($contentPerso2);
                 </div>
                 <div class="col-6">
                     <?php if(isset($_GET['idCombat'])) {
-                        $idCombat = intval($_GET['idCombat']);
-                        var_dump($idCombat);
-                        $select = resume($idCombat);
+                    $idCombat = intval($_GET['idCombat']);
+                    var_dump($idCombat);
+                    $select = resume($idCombat);
+                    ?>
 
-                        $combat = $select->fetchAll();
-                        var_dump($combat);?>
+                    <table style="width:100%">
+                        <tr>
+                            <th>attaquant</th>
+                            <th>coup</th>
+                            <th>defenseur</th>
+                        </tr>
+                        <tr>
+                            <?php $select = resume($idCombat);
+                            }?>
 
-                        <table style="width:100%">
-                            <tr>
-                                <th>attaquant</th>
-                                <th>coup</th>
-                                <th>defenseur</th>
-                            </tr>
-                            <tr>
-                            <?php
-                                foreach ($combat as $step) {
-                                echo "<td>" . $step->attacking . $step->move . $step->defending . "</td>";
-                            }
-                        }?>
                            </tr>
 
                         </table>

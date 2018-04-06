@@ -34,10 +34,13 @@ function win($attacking, $defending, $fightId) {
     $pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($attacking, ' a vaincu avec bravoure et panache ', $defending, $fightId)");
 }
 
-function resume($fightId) {
+function resume($fightId)
+{
     $select = $pdo->query("SELECT * FROM attack WHERE fight_id = $fightId");
-    return $select;
-
+    $select->fetchAll();
+    foreach ($select as $step) {
+        echo "<td>" . $step->attacking . $step->move . $step->defending . "</td>";
+    }
 }
 
 
