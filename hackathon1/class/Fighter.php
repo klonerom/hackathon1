@@ -28,8 +28,7 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->punchDamage();
         }
-        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a punché
-        // dans sa face ', $perso->getId(), $fightId)");
+        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a punché dans sa face ', $perso->getId(), $fightId)");
     }
 
     public function kick(Fighter $perso)
@@ -39,8 +38,7 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->kickDamage();
         }
-        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a donné un
-        // kick à ', $perso->getId(), $fightId)");
+        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a donné un kick à ', $perso->getId(), $fightId)");
     }
 
     public function special(Fighter $perso)
@@ -50,13 +48,12 @@ class Fighter
             // On indique au personnage qu'il doit recevoir des dégâts.
             return $perso->specialDamage();
         }
-        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a utilisé
-        // son coup spécial sur ', $perso->getId(), $fightId)");
+        //$pdo->exec("INSERT INTO attack (attacking, move, defending, fight_id) VALUES ($this->getId(), ' a utilisé son coup spécial sur ', $perso->getId(), $fightId)");
     }
 
     public function punchDamage()
     {
-        $this->damage = rand(10,40);
+        $this->damage = round((rand(10,20)/100) * $this->getCombat(), 0, PHP_ROUND_HALF_UP);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -68,7 +65,7 @@ class Fighter
     
     public function kickDamage()
     {
-        $this->damage = rand(30,60);
+        $this->damage = round((rand(10,30)/100) * $this->getCombat(), 0, PHP_ROUND_HALF_UP);
 
         $this->power = $this->getPower() - $this->damage;
 
@@ -80,7 +77,7 @@ class Fighter
     
     public function specialDamage()
     {
-        $this->damage = rand(40,70);
+        $this->damage = round((rand(20,50)/100) * $this->getCombat(), 0, PHP_ROUND_HALF_UP);
 
         $this->power = $this->getPower() - $this->damage;
 
