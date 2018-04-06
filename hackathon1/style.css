@@ -82,8 +82,13 @@
 .img-fight{
     border-radius: 200px;
     display: block;
+    margin: auto;
     height: 400px;
     width: 400px;
+}
+
+.display-5{
+    margin: auto;
 }
 
 .img-vs{

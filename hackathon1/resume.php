@@ -59,10 +59,10 @@ if (!empty($_GET['idWinner'])) {
                     <h2 class="text-center">Resumé du combat</h2>
                 </div>
                 <div class="col-md-3 bdr">
-                    <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
-                    <p class="display-5"><?= $perso1->name ?> est le vainqueur !</p>
                 </div>
                 <div class="col-6">
+                    <img class="img-fight" src="<?php echo $perso1->images->md; ?>">
+                    <p class="display-5"><?= $perso1->name ?> est le vainqueur !</p>
                     <?php if(isset($_GET['idCombat'])) {
                     $idCombat = intval($_GET['idCombat']);
                     $query = "SELECT * FROM attack WHERE fight_id = $idCombat";
@@ -94,7 +94,6 @@ if (!empty($_GET['idWinner'])) {
 
                 </div>
                 <div class="col-md-3 bdr">
-                    <img class="img-fight" src="<?php echo $perso2->images->md; ?>">
                 </div>
 
             </div>
