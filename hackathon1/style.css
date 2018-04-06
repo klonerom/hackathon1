@@ -9,7 +9,14 @@
     color:black;
 }
 
+.p-resume{
+    font-family: cursive;
+    text-align: center;
+}
 
+.h2-winner{
+    margin-bottom: 20px;
+}
 #scrollUp {
     position: fixed;
     bottom : 50px;
@@ -26,7 +33,9 @@
     margin-bottom: 20px;
 
 }
-
+.section-header{
+    margin: 20px auto;
+}
 .btn-primary{
      background-color: darkorange;
      border-color: darkred;
@@ -77,12 +86,17 @@ p{
     border: solid;
     border-radius: 10px;
 }
+.display-5{
+    margin: auto;
+    text-align: center;
+}
 
 .img-fight{
     border-radius: 140px;
     display: block;
     height: 280px;
     width: 280px;
+
 }
 
 .btn-attack{
